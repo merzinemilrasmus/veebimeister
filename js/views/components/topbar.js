@@ -20,6 +20,7 @@ export default () => {
       display: 'grid',
       gridTemplateColumns: `repeat(${links.length +1}, auto) 1fr`,
       justifyContent: 'start',
+      zIndex: 9,
     }
   });
 
