@@ -1,6 +1,7 @@
 import elem from '/js/libs/elem.js';
 
 const barHeight = 2.5;
+const barPadding = .8;
 const links = [ 'avaleht', 'koolitused', 'kontakt', 'login' ];
 
 export default () => {
@@ -8,8 +9,8 @@ export default () => {
     style: {
       width: '100%',
       boxSizing: 'border-box',
-      height: `${barHeight +1.6}rem`,
-      padding: '.8rem',
+      height: `${barHeight +barPadding *2}rem`,
+      padding: `${barPadding}rem`,
       position: 'fixed',
       top: 0,
       left: 0,
@@ -67,7 +68,10 @@ export default () => {
       border: 'none',
       height: '1.8rem',
     },
-    onclick: () => location.assign(`/koolitused/${searchBar.value}`)
+    onclick: e => {
+      e.preventDefault();
+      location.assign(`/koolitused/${searchBar.value}`);
+    }
   }, search);
 
   const searchIcon = elem('img', {
@@ -77,5 +81,7 @@ export default () => {
     }
   }, searchButton);
 
+
+  const filler = elem('div', { style: { height: `${barHeight +barPadding *2}rem` } }, document.body);
   document.body.appendChild(div);
 }

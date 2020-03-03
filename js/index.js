@@ -16,6 +16,11 @@ switch (route[0]) {
     renderView('avaleht');
     break;
 
+  case 'koolitused':
+    cleanRoute(2);
+    renderView('koolitused');
+    break;
+
   default:
     location.assign('/');
 }
