@@ -23,6 +23,12 @@ a:hover {
   text-decoration: underline;
 }
 
+button, input, textarea {
+  resize: none;
+  font: inherit;
+}
+
 button {
   cursor: pointer;
+  font-weight: 500;
 }

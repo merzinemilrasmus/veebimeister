@@ -40,25 +40,33 @@ export default () => {
     style: {
       position: 'absolute',
       background:'var(--dark-white)',
-      top: '50vw',
+      top: '60vw',
       display: 'grid',
       width: '100%',
-      padding: '12rem 24rem',
+      height: '50rem',
+      maxHeight: '100vw',
       boxSizing: 'border-box',
-      gridGap: '3rem',
-      justifyContent:'space-between',
+      gridGap: '10vw',
+      justifyContent:'center',
+      alignContent:'center',
       gridTemplateColumns: 'auto auto',
-      fontWeight:'500',
-      fontSize:'1.5vw'
     }
   }, document.body);
 
-  const info = elem('div', {}, kontakt)
+  const info = elem('div', {
+    style: {
+      display: 'grid',
+      alignContent: 'space-between',
+    }
+  }, kontakt)
   const list = elem('ul', {
     style: {
       listStyle: "none",
       padding: 0,
-      marginTop: '10px'
+      margin: 0,
+      fontSize:'1.5rem',
+      fontWeight:'500',
+      marginTop: '.8rem'
     }
   }, info);
   const aadress = elem('li', {
@@ -71,7 +79,10 @@ export default () => {
   const list2 = elem('ul', {
     style: {
       listStyle: "none",
-      padding: 0
+      padding: 0,
+      margin: 0,
+      fontSize:'1.5rem',
+      fontWeight:'500',
     }
   }, info);
   const email = elem('li', {
@@ -82,13 +93,11 @@ export default () => {
     innerHTML:"+372 555 1111",
   }, list2)
 
-  const list3 = elem('div', {
-   }, info);
+  const list3 = elem('div', {}, info);
 
   const iconStyle = {
     height: '3rem',
-    marginRight:'1.5vw',
-    marginTop:'2vw',
+    marginRight:'1.5rem',
     cursor: 'pointer',
   };
 
@@ -111,12 +120,12 @@ fb.src = '/img/logo-facebook.svg';
 
   const vormiLahtriteStiil = {
     display:'block',
-      width: '30ex',
-      marginTop:'10px',
-      borderRadius:'10px',
-      border:'none',
-      padding:'1.1vw'
-
+    width: '30ex',
+    marginTop:'.8rem',
+    borderRadius:'.8rem',
+    border:'none',
+    background: 'var(--white)',
+    padding:'.8rem'
   }
 
   const vormPealkiri = elem('input', {
@@ -127,19 +136,19 @@ fb.src = '/img/logo-facebook.svg';
     placeholder:'Saatja',
     style: vormiLahtriteStiil
   }, sendEmail);
-  const vormSisu = elem('input', {
+  const vormSisu = elem('textarea', {
     placeholder:'Sisu',
-    style: vormiLahtriteStiil
+    style: {
+      ...vormiLahtriteStiil,
+      height: '6rem',
+    }
   }, sendEmail);
   const vormButton = elem('button', {
     innerHTML:'Saada',
     style: {
       ...vormiLahtriteStiil,
-      marginTop:'2vw',
-      padding:'0.5vw',
+      marginTop: '1.5rem',
       width:'10ex'
-      
-
     },
   }, sendEmail);
 };
