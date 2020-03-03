@@ -8,7 +8,7 @@ const cleanRoute = level => route.length > level && location.assign('/' +route.s
 
 switch (route[0]) {
   case '':
-    location.assign('/avaleht');
+    location.assign('avaleht');
     break;
 
   case 'avaleht':
@@ -25,7 +25,4 @@ switch (route[0]) {
       cleanRoute(1);
       renderView('login');
       break;
-
-  default:
-    location.assign('/');
 }
