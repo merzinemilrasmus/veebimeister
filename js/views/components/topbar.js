@@ -24,7 +24,9 @@ export default () => {
   });
 
   const logo = elem('img', {
-    style: { height: '100%' },
+    style: {
+      width: `${barHeight}rem`,
+    },
     src: '/img/logo.svg',
   }, div);
 
