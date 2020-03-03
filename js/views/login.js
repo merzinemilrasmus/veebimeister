@@ -6,27 +6,22 @@ export default () => {
   topbar();
 
 
-  const login = elem('form', {}, document.body)
+  const login = elem('form', {
+    style: {
+      marginTop:'5rem',
+    }
+  }, document.body)
 
   const loginLahtriteStiil = {
     display:'block',
-      width: '30ex',
-      borderRadius:'10px',
-      border:'none',
-      padding:'1.1vw',
-      margin:'auto',
-      marginTop:'25px',
-     
-      
+    width: '30ex',
+    margin:'auto',
+    marginTop:'1.5rem',
   }
 
   const kasutajanimi = elem('input', {
     placeholder:'Kasutajanimi',
-    style: {
-        ...loginLahtriteStiil,
-        marginTop:'10vw',
-        
-      }
+    style: loginLahtriteStiil,
   }, login);
 
   const password = elem('input', {
@@ -38,9 +33,8 @@ export default () => {
     innerHTML:'Logi sisse',
     style: {
       ...loginLahtriteStiil,
-      marginTop:'2vw',
-      padding:'0.5vw',
-      width:'20ex'
+      marginTop:'2rem',
+      width:'16ex'
     }
   }, login)
 };

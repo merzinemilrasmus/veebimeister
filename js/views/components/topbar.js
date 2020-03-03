@@ -2,7 +2,7 @@ import elem from '/js/libs/elem.js';
 
 const barHeight = 2.5;
 const barPadding = .8;
-const links = [ 'avaleht', 'koolitused', 'kontakt', 'login' ];
+const links = [ 'avaleht', 'koolitused', 'kontakt', 'logIn' ];
 
 export default () => {
   const div = elem('div', {
@@ -33,7 +33,7 @@ export default () => {
 
   links.forEach(link => {
     const hAvaleht = elem('a', {
-      href: `/${link}`,
+      href: `/${link.toLowerCase()}`,
       innerHTML: link,
       style: {
         textTransform: 'capitalize',
@@ -69,7 +69,8 @@ export default () => {
     style: {
       background: '#0000',
       border: 'none',
-      height: '1.8rem',
+      padding: 0,
+      height: '1.6rem',
     },
     onclick: e => {
       e.preventDefault();

@@ -2,7 +2,7 @@ import elem from '../libs/elem.js';
 import topbar from './components/topbar.js';
 
 
-export default () => {
+export default props => {
   topbar();
   const wallpaper = elem('img', {
     style: {
@@ -12,10 +12,9 @@ export default () => {
       width: '100%',
       zIndex: -1,
       opacity: 0.5
-
-    }
+    },
+    src: '/img/pilt.jpg'
   }, document.body);
-  wallpaper.src = '/img/pilt.jpg';
   const company = elem('p', {
     innerHTML:"Terav pliiats",
     style: {
@@ -103,17 +102,18 @@ export default () => {
 
   const fb = elem('img', {
     style: iconStyle,
+    src: '/img/logo-facebook.svg'
   }, list3)
-fb.src = '/img/logo-facebook.svg';
 
   const linked = elem('img', {
     style: iconStyle,
+    src: '/img/logo-linkedin.svg'
   }, list3)
-  linked.src = '/img/logo-linkedin.svg';
+
   const skype = elem('img', {
     style: iconStyle,
+    src: '/img/logo-skype.svg'
   }, list3)
-  skype.src = '/img/logo-skype.svg';
 
 
   const sendEmail = elem('form', {}, kontakt)
@@ -122,10 +122,6 @@ fb.src = '/img/logo-facebook.svg';
     display:'block',
     width: '30ex',
     marginTop:'.8rem',
-    borderRadius:'.8rem',
-    border:'none',
-    background: 'var(--white)',
-    padding:'.8rem'
   }
 
   const vormPealkiri = elem('input', {
@@ -151,4 +147,8 @@ fb.src = '/img/logo-facebook.svg';
       width:'10ex'
     },
   }, sendEmail);
+
+  setTimeout(() => {
+    if (props.route[0] === 'kontakt') kontakt.scrollIntoView({behavior: 'smooth'});
+  }, 0);
 };

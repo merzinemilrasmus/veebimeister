@@ -26,6 +26,10 @@ a:hover {
 button, input, textarea {
   resize: none;
   font: inherit;
+  background: var(--white);
+  border: none;
+  padding: .8rem;
+  border-radius: .8rem;
 }
 
 button {
