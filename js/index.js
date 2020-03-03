@@ -21,8 +21,11 @@ switch (route[0]) {
     renderView('koolitused');
     break;
 
-    case 'login':
-      cleanRoute(1);
-      renderView('login');
-      break;
+  case 'login':
+    cleanRoute(1);
+    renderView('login');
+    break;
+
+  default:
+    location.assign('/');
 }
