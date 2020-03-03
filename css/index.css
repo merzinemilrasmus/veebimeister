@@ -11,9 +11,14 @@ body {
   color: var(--coffee);
   background: var(--dark-white);
   margin: 0;
+  letter-spacing: .1ex;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
 }
