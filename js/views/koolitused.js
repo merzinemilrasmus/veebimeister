@@ -2,6 +2,7 @@ import elem from '/js/libs/elem.js';
 import topbar from './components/topbar.js';
 
 
+const currency = '€';
 const getKoolitused = () => [
   {
     title: 'PHP alused',
@@ -33,20 +34,78 @@ export default () => {
 
   const content = elem('div', {
     style: {
-      width: '100%',
-      boxSizing: 'border-box',
-      padding: '2rem',
+      padding: '3rem',
     }
   });
 
+  const mainTitle = elem('h1', { innerHTML: 'Koolitused' }, content);
+
+  const list = elem('div', {
+    style: {
+      width: '100%',
+      maxWidth: '80rem',
+      display: 'grid',
+      gridTemplateColumns: '1fr auto',
+      gridGap: '2rem',
+      boxSizing: 'border-box',
+    }
+  }, content);
+
   getKoolitused().forEach(koolitus => {
-    const div = elem('div', {}, content);
-    const title = elem('h1', {
+    const subject = elem('div', {}, list);
+    const title = elem('h2', {
       innerHTML: koolitus.title,
-    }, div);
+      style: {
+        textTransform: 'capitalize'
+      }
+    }, subject);
     const desc = elem('p', {
       innerHTML: koolitus.description,
-    }, div);
+      style: {
+        textAlign: 'justify',
+      }
+    }, subject);
+    const time = elem('p', {
+      innerHTML: koolitus.time,
+    }, subject);
+    const price = elem('p', {
+      innerHTML: koolitus.price +currency,
+    }, subject);
+    const button = elem('button', {
+      innerHTML: 'Register',
+      style: {
+        font: 'inherit',
+        border: 'none',
+        background: 'var(--pencil)',
+        padding: '.8rem 2rem',
+        color: 'var(--coffee)',
+        borderRadius: '1rem',
+      }
+    }, subject);
+
+    const trainer = elem('div', {
+      style: {
+        width: '20ex',
+      }
+    }, list);
+    const name = elem('h3', {
+      innerHTML: koolitus.trainer.name,
+      style: {
+        textAlign: 'center',
+      }
+    }, trainer);
+    const image = elem('img', {
+      src: koolitus.trainer.imageUrl,
+      style: {
+        width: '100%',
+      }
+    }, trainer);
+    const trainerDesc = elem('p', {
+      innerHTML: koolitus.trainer.description,
+      style: {
+        textAlign: 'center',
+      }
+    }, trainer);
   });
 
   document.body.appendChild(content);
