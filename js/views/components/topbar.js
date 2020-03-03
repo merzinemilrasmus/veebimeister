@@ -55,7 +55,7 @@ export default () => {
     placeholder: 'otsi',
     style: {
       height: '1rem',
-      padding: '.5rem',
+      padding: '.5rem .8rem',
       border: 'none',
       borderRadius: `${barHeight}rem`,
     }
