@@ -34,7 +34,7 @@ export default () => {
     style: {
       ...loginLahtriteStiil,
       marginTop:'2rem',
-      width:'16ex'
+      width:'auto'
     }
   }, login)
 };

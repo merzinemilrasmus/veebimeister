@@ -144,7 +144,7 @@ export default props => {
     style: {
       ...vormiLahtriteStiil,
       marginTop: '1.5rem',
-      width:'10ex'
+      width: 'auto',
     },
   }, sendEmail);
 

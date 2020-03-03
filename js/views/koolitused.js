@@ -35,6 +35,9 @@ export default () => {
   const content = elem('div', {
     style: {
       padding: '3rem',
+      width: '80rem',
+      maxWidth: '80%',
+      margin: 'auto',
     }
   });
 
@@ -43,7 +46,6 @@ export default () => {
   const list = elem('div', {
     style: {
       width: '100%',
-      maxWidth: '80rem',
       display: 'grid',
       gridTemplateColumns: '1fr auto',
       gridGap: '2rem',
@@ -72,15 +74,7 @@ export default () => {
       innerHTML: koolitus.price +currency,
     }, subject);
     const button = elem('button', {
-      innerHTML: 'Register',
-      style: {
-        font: 'inherit',
-        border: 'none',
-        background: 'var(--pencil)',
-        padding: '.8rem 2rem',
-        color: 'var(--coffee)',
-        borderRadius: '1rem',
-      }
+      innerHTML: 'Registreeri',
     }, subject);
 
     const trainer = elem('div', {

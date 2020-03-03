@@ -28,11 +28,16 @@ button, input, textarea {
   font: inherit;
   background: var(--white);
   border: none;
-  padding: .8rem;
+  padding: .8rem 1.2rem;
   border-radius: .8rem;
 }
 
 button {
   cursor: pointer;
   font-weight: 500;
+}
+
+button:hover {
+  background: var(--pencil);
+  color: var(--white);
 }
