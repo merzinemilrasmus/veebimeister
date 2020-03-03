@@ -1,7 +1,7 @@
 const route = location.href.replace(/^.*:\/\/[^/]+\//, '').split('/');
 
 
-const renderView = async (view, props={}) => (await import(`/js/views/${view}.js`)).default(props);
+const renderView = async (view, props={}) => (await import(`./views/${view}.js`)).default(props);
 
 const cleanRoute = level => route.length > level && location.assign('/' +route.slice(0, level).join('/'));
 

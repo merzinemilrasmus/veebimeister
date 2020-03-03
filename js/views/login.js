@@ -1,4 +1,4 @@
-import elem from '/js/libs/elem.js';
+import elem from '../libs/elem.js';
 import topbar from './components/topbar.js';
 
 
