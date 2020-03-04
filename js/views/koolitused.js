@@ -35,8 +35,8 @@ export default () => {
   const content = elem('div', {
     style: {
       padding: '3rem',
-      width: '80rem',
-      maxWidth: '80%',
+      width: '80%',
+      maxWidth: '60rem',
       margin: 'auto',
     }
   });
@@ -48,7 +48,7 @@ export default () => {
       width: '100%',
       display: 'grid',
       gridTemplateColumns: '1fr auto',
-      gridGap: '2rem',
+      gridGap: '4rem',
       boxSizing: 'border-box',
     }
   }, content);
