@@ -21,6 +21,8 @@ switch ($_SERVER['REQUEST_METHOD']) {
           /* 'openSlots' => getOpenSlots($record->id) */
         ]; }, getCourses());
         break;
+      case 2: case 'login':
+        return login($input['email'], $input['hash']);
     }
     echo json_encode($output, JSON_INVALID_UTF8_SUBSTITUTE);
     break;
