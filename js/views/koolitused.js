@@ -4,7 +4,6 @@ import topbar from './components/topbar.js';
 
 
 const currency = '€';
-const getKoolitused = api.getCourses();
 
 
 export default () => {
@@ -25,14 +24,17 @@ export default () => {
     style: {
       width: '100%',
       display: 'grid',
-      gridTemplateColumns: '1fr auto',
       gridGap: '4rem',
       boxSizing: 'border-box',
     }
   }, content);
 
-  getKoolitused().then(res => res.json()).then(arr => arr.forEach(koolitus => {
-    const subject = elem('div', {}, list);
+  api.getCourses().then(res => res.json()).then(arr => arr.forEach(koolitus => {
+    const subject = elem('div', {
+      style: {
+        background: (new Date()).getTime() < (new Date(koolitus.time)).getTime() ? '#afa' : 'none'
+      }
+    }, list);
     const title = elem('h2', {
       innerHTML: koolitus.title,
       style: {
@@ -48,36 +50,15 @@ export default () => {
     const time = elem('p', {
       innerHTML: koolitus.time,
     }, subject);
+    const trainer = elem('p', {
+      innerHTML: koolitus.trainer,
+    }, subject);
     const price = elem('p', {
       innerHTML: koolitus.price +currency,
     }, subject);
     const button = elem('button', {
       innerHTML: 'Registreeri',
     }, subject);
-
-    const trainer = elem('div', {
-      style: {
-        width: '20ex',
-      }
-    }, list);
-    const name = elem('h3', {
-      innerHTML: koolitus.trainer.name,
-      style: {
-        textAlign: 'center',
-      }
-    }, trainer);
-    const image = elem('img', {
-      src: koolitus.trainer.imageUrl,
-      style: {
-        width: '100%',
-      }
-    }, trainer);
-    const trainerDesc = elem('p', {
-      innerHTML: koolitus.trainer.description,
-      style: {
-        textAlign: 'center',
-      }
-    }, trainer);
   }));
 
   document.body.appendChild(content);

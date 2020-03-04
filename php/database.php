@@ -2,7 +2,7 @@
 
 $dbHost = DB_HOST;
 $dbName = DB_NAME;
-$pdo = new PDO("mysql:dbname=$dbName;host=$dbHost", DB_USER, DB_PASS);
+$pdo = new PDO("mysql:dbname=$dbName;host=$dbHost;charset=utf8", DB_USER, DB_PASS);
 
 $pdo->exec('
   create table if not exists KOOLITUS (
@@ -31,15 +31,19 @@ $pdo->exec('
 ');
 
 function getCourses() {
-  $stmt = $pdo->prepare('select * from KOOLITUS order by time desc');
+  $dbHost = DB_HOST;
+  $dbName = DB_NAME;
+  $pdo = new PDO("mysql:dbname=$dbName;host=$dbHost", DB_USER, DB_PASS);
+
+  $stmt = $pdo->prepare('select * from KOOLITUS order by aeg desc');
   $stmt->execute();
-  return $stmt->fetchAll();
+  return $stmt->fetchAll(PDO::FETCH_OBJ);
 }
 
 function getUser($email, $hash) {
   $stmt = $pdo->prepare('select * from OSALEJA where email=? && hash=?');
   $stmt->execute($email, $hash);
-  return $stmt->fetch();
+  return $stmt->fetch(PDO::FETCH_OBJ);
 }
 
 function login($email, $hash) {

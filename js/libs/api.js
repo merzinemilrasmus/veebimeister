@@ -1,5 +1,5 @@
 const apiRequest = body => fetch('/api.php', {
-  method: 'POST';
+  method: 'POST',
   body: JSON.stringify(body)
 });
 

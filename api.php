@@ -10,19 +10,19 @@ switch ($_SERVER['REQUEST_METHOD']) {
     $output = (object) [];
     switch ($input['requestType']) {
       case 1: case 'getCourses':
-        $output = array_map(fn($record) => [
-          'time' => $record['aeg'],
-          'title' => $record['nimi'],
-          'description' => $record['sisu'],
-          'trainer' => $record['koolitaja'],
-          'location' => $record['asukoht'],
-          'price' => $record['hind'] /100,
-          'slots' => $record['kohtadeArv']
-          /* 'openSlots' => getOpenSlots($record['id']) */
-        ], getCourses());
+        $output = array_map(function($record) { return [
+          'time' => $record->aeg,
+          'title' => $record->nimi,
+          'description' => $record->sisu,
+          'trainer' => $record->koolitaja,
+          'location' => $record->asukoht,
+          'price' => $record->hind /100,
+          'slots' => $record->kohtadeArv
+          /* 'openSlots' => getOpenSlots($record->id) */
+        ]; }, getCourses());
         break;
     }
-    echo json_encode($output);
+    echo json_encode($output, JSON_INVALID_UTF8_SUBSTITUTE);
     break;
   default: header('Location: /');
 }
