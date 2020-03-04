@@ -20,6 +20,7 @@ $pdo->exec('
     nimi varchar(63) not null,
     tel varchar(31) not null,
     email varchar(63) not null,
+    hash char(40) not null,
     sessionId char(32),
     sessionTime datetime
   );
@@ -29,5 +30,11 @@ $pdo->exec('
     koolituseId int not null
   );
 ');
+
+function getKoolitused() {}
+
+function login($email, $hash) {}
+
+function register($koolituseId, $sessionId) {}
 
 ?>
