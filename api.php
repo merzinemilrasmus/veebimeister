@@ -1,5 +1,5 @@
 <?php
 
-echo '<h1>API</h1>';
+require_once './php/config.php';
 
 ?>
