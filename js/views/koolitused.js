@@ -1,32 +1,10 @@
 import elem from '../libs/elem.js';
+import api from '../libs/api.js';
 import topbar from './components/topbar.js';
 
 
 const currency = '€';
-const getKoolitused = () => [
-  {
-    title: 'PHP alused',
-    time: '2020-03-21 09:00',
-    description: 'Sed tenetur doloribus esse velit maxime est nemo. Voluptatem eligendi praesentium non. Repellat qui enim ad quis reprehenderit excepturi. Aut et nisi dolore sint voluptas nobis inventore est. Saepe aut sint ipsa. Natus sint blanditiis a unde.',
-    price: 20,
-    trainer: {
-      name: 'John Smith',
-      imageUrl: '/img/logo.svg',
-      description: 'Et aut soluta similique deserunt id.',
-    }
-  },
-  {
-    title: 'JavaScript for everything',
-    time: '2020-03-14 09:00',
-    description: 'Qui consequuntur repudiandae ea quidem veniam. Libero repudiandae nobis omnis debitis. Omnis enim numquam omnis repudiandae. Commodi et unde voluptatibus accusamus a totam. Id vitae rerum voluptatibus doloremque ex deserunt amet. Quia repudiandae ea ipsum vero enim ab veniam.',
-    price: 30,
-    trainer: {
-      name: 'John Smith',
-      imageUrl: '/img/logo.svg',
-      description: 'Et aut soluta similique deserunt id.',
-    }
-  }
-];
+const getKoolitused = api.getCourses();
 
 
 export default () => {
@@ -53,7 +31,7 @@ export default () => {
     }
   }, content);
 
-  getKoolitused().forEach(koolitus => {
+  getKoolitused().then(res => res.json()).then(arr => arr.forEach(koolitus => {
     const subject = elem('div', {}, list);
     const title = elem('h2', {
       innerHTML: koolitus.title,
@@ -100,7 +78,7 @@ export default () => {
         textAlign: 'center',
       }
     }, trainer);
-  });
+  }));
 
   document.body.appendChild(content);
 };
