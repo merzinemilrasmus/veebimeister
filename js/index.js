@@ -31,6 +31,9 @@ switch (route[0]) {
     renderView('login');
     break;
 
+  case 'logout':
+    sessionStorage.clear();
+
   default:
     location.assign('/');
 }

@@ -56,9 +56,23 @@ export default () => {
     const price = elem('p', {
       innerHTML: koolitus.price +currency,
     }, subject);
+    if (koolitus.registered) {
+      const reg = elem('p', {
+        innerHTML: 'Olete registreeritud!'
+      }, subject);
+    } else {
+    console.log(koolitus.id, koolitus.registered);
     const button = elem('button', {
       innerHTML: 'Registreeri',
+      onclick: () => {
+        const sessionId = sessionStorage.getItem('sessionId');
+        if (sessionId) {
+          api.register(koolitus.id);
+          location.reload();
+        } else location.assign('/login');
+      }
     }, subject);
+}
   }));
 
   document.body.appendChild(content);

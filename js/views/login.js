@@ -21,7 +21,7 @@ export default () => {
   }
 
   const kasutajanimi = elem('input', {
-    placeholder:'Kasutajanimi',
+    placeholder:'Email',
     style: loginLahtriteStiil,
   }, login);
 
@@ -40,8 +40,14 @@ export default () => {
     },
     onclick: e => {
       e.preventDefault();
-      const sessionId = api.login(kasutajanimi.value, password.value);
-      console.log('--', sessionId);
+      const email = kasutajanimi.value;
+      api.login(email, password.value).then(res => res.json()).then(sessionId => {
+        if (sessionId) {
+          sessionStorage.setItem('sessionId', sessionId);
+          sessionStorage.setItem('email', email);
+          location.assign('/');
+        } else location.reload();
+      });
     }
   }, login)
 };

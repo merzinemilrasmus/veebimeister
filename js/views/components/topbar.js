@@ -2,7 +2,7 @@ import elem from '/js/libs/elem.js';
 
 const barHeight = 2.5;
 const barPadding = .8;
-const links = [ 'avaleht', 'koolitused', 'kontakt', 'logIn' ];
+const links = [ 'avaleht', 'koolitused', 'kontakt', sessionStorage.getItem('sessionId') ? 'logOut' : 'logIn' ];
 
 export default () => {
   const div = elem('div', {
@@ -32,7 +32,7 @@ export default () => {
   }, div);
 
   links.forEach(link => {
-    const hAvaleht = elem('a', {
+    const portal = elem('a', {
       href: `/${link.toLowerCase()}`,
       innerHTML: link,
       style: {
@@ -42,6 +42,10 @@ export default () => {
         verticalAlign: 'middle',
       }
     }, div);
+    if (link === 'logOut') elem('span', {
+      innerHTML: sessionStorage.getItem('email'),
+      style: { marginLeft: '.5rem' }
+    }, portal);
   });
 
   const search = elem('form', {

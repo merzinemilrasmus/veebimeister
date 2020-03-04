@@ -1,4 +1,4 @@
-import sha1 from '../libs/api.js';
+import sha1 from './sha1.js';
 
 const apiRequest = body => fetch('/api.php', {
   method: 'POST',
@@ -6,10 +6,18 @@ const apiRequest = body => fetch('/api.php', {
 });
 
 export default {
-  getCourses: () => apiRequest({ requestType: 1 }),
+  getCourses: () => apiRequest({
+    requestType: 1,
+    sessionId: sessionStorage.getItem('sessionId')
+  }),
   login: (email, password) => apiRequest({
     requestType: 2,
     hash: sha1(password),
     email
+  }),
+  register: (koolituseId) => apiRequest({
+    requestType: 3,
+    sessionId: sessionStorage.getItem('sessionId'),
+    koolituseId
   })
 };
