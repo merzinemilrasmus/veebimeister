@@ -21,6 +21,7 @@ export default () => {
 
   const kasutajanimi = elem('input', {
     placeholder:'Email',
+    type:'email',
     style: loginLahtriteStiil,
   }, login);
 
