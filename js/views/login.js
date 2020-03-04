@@ -1,4 +1,5 @@
 import elem from '../libs/elem.js';
+import api from '../libs/api.js';
 import topbar from './components/topbar.js';
 
 
@@ -26,6 +27,7 @@ export default () => {
 
   const password = elem('input', {
     placeholder:'Salasõna',
+    type: 'password',
     style: loginLahtriteStiil
   }, login);
   
@@ -35,6 +37,11 @@ export default () => {
       ...loginLahtriteStiil,
       marginTop:'2rem',
       width:'auto'
+    },
+    onclick: e => {
+      e.preventDefault();
+      const sessionId = api.login(kasutajanimi.value, password.value);
+      console.log('--', sessionId);
     }
   }, login)
 };
