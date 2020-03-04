@@ -6,7 +6,6 @@ import topbar from './components/topbar.js';
 export default () => {
   topbar();
 
-
   const login = elem('form', {
     style: {
       marginTop:'5rem',
@@ -45,7 +44,7 @@ export default () => {
         if (sessionId) {
           sessionStorage.setItem('sessionId', sessionId);
           sessionStorage.setItem('email', email);
-          location.assign('/');
+          location.assign('/koolitused');
         } else location.reload();
       });
     }
