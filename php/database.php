@@ -16,24 +16,34 @@ $pdo->exec('
     kohtadeArv int not null
   );
   create table if not exists OSALEJA (
-    osalejaId int auto_increment key,
+    email varchar(63) key,
     nimi varchar(63) not null,
     tel varchar(31) not null,
-    email varchar(63) not null,
     hash char(40) not null,
     sessionId char(32),
     sessionTime datetime
   );
   create table if not exists OSALEMINE (
     id int auto_increment key,
-    osalejaId int not null,
+    osalejaEmail varchar(63) not null,
     koolituseId int not null
   );
 ');
 
-function getKoolitused() {}
+function getCourses() {
+  $stmt = $pdo->prepare('select * from KOOLITUS order by time desc');
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
 
-function login($email, $hash) {}
+function getUser($email, $hash) {
+  $stmt = $pdo->prepare('select * from OSALEJA where email=? && hash=?');
+  $stmt->execute($email, $hash);
+  return $stmt->fetch();
+}
+
+function login($email, $hash) {
+}
 
 function register($koolituseId, $sessionId) {}
 
